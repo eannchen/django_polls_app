@@ -1,0 +1,19 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+        <li>
+            {% comment %} <a href="/polls/{{ question.id }}/">{{ question.question_text }}</a> {% endcomment %}
+            {% comment %} 路徑使用別名，解耦合 {% endcomment %}
+            {% comment %} <a href="{% url 'detail' question.id %}">{{ question.question_text }}</a> {% endcomment %}
+            {% comment %} 若 urls 有設定命名空間，寫法則用 polls:detail {% endcomment %}
+            <a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}

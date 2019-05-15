@@ -1,0 +1,10 @@
+/*
+    {% static %} 模板標籤在靜態文件（例如樣式表）中是不可用的，它們不是由 Django 生成。
+    仍需要使用 相對路徑 的方式在你的靜態文件之間互相引用
+*/
+li a {
+  color: white;
+}
+body {
+  background: white url('images/background.gif') no-repeat;
+}
